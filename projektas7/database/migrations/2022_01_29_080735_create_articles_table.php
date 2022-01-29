@@ -15,6 +15,7 @@ class CreateArticlesTable extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
+            $table->foreign('id')->references('id')->on('article_images');
             $table->string('title');
             $table->text('excerpt');
             $table->longtext('description');

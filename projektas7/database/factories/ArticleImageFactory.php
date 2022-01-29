@@ -14,7 +14,11 @@ class ArticleImageFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'alt' => $this->faker->word(),
+            'src' => $this->faker->word(),
+            'width' => $this->faker->numberBetween(100, 200),
+            'height' => $this->faker->numberBetween(100, 200),
+            'class' => $this->faker->word()
         ];
     }
 }

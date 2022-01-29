@@ -14,7 +14,8 @@ class ArticleCategoryFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => $this->faker->word(),
+            'description' => $this->faker->paragraph()
         ];
     }
 }

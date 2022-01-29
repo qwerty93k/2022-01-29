@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ArticleCategory;
 use App\Http\Requests\StoreArticleCategoryRequest;
 use App\Http\Requests\UpdateArticleCategoryRequest;
+use Illuminate\Http\Request;
 
 class ArticleCategoryController extends Controller
 {
@@ -15,7 +16,8 @@ class ArticleCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $articlecategories = ArticleCategory::all();
+        return view('articlecategory.index', ['articlecategories' => $articlecategories]);
     }
 
     /**
@@ -25,7 +27,7 @@ class ArticleCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('articlecategory.create');
     }
 
     /**
@@ -34,9 +36,15 @@ class ArticleCategoryController extends Controller
      * @param  \App\Http\Requests\StoreArticleCategoryRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreArticleCategoryRequest $request)
+    public function store(Request $request)
     {
-        //
+        $articlecategory = new ArticleCategory;
+
+        $articlecategory->title = $request->title;
+        $articlecategory->description = $request->description;
+
+        $articlecategory->save();
+        return redirect()->route('articlecategory.index');
     }
 
     /**
@@ -47,7 +55,7 @@ class ArticleCategoryController extends Controller
      */
     public function show(ArticleCategory $articleCategory)
     {
-        //
+        return view('articlecategory.show', ['articlecategory' => $articleCategory]);
     }
 
     /**
@@ -58,7 +66,7 @@ class ArticleCategoryController extends Controller
      */
     public function edit(ArticleCategory $articleCategory)
     {
-        //
+        return view('articlecategory.edit', ['articlecategory' => $articleCategory]);
     }
 
     /**
@@ -68,9 +76,13 @@ class ArticleCategoryController extends Controller
      * @param  \App\Models\ArticleCategory  $articleCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateArticleCategoryRequest $request, ArticleCategory $articleCategory)
+    public function update(Request $request, ArticleCategory $articleCategory)
     {
-        //
+        $articleCategory->title = $request->title;
+        $articleCategory->description = $request->description;
+
+        $articleCategory->save();
+        return redirect()->route('articlecategory.index');
     }
 
     /**
@@ -81,6 +93,7 @@ class ArticleCategoryController extends Controller
      */
     public function destroy(ArticleCategory $articleCategory)
     {
-        //
+        $articleCategory->delete();
+        return redirect()->route('articlecategory.index');
     }
 }

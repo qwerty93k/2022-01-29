@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ArticleImage;
 use App\Http\Requests\StoreArticleImageRequest;
 use App\Http\Requests\UpdateArticleImageRequest;
+use Illuminate\http\Request;
 
 class ArticleImageController extends Controller
 {
@@ -15,7 +16,8 @@ class ArticleImageController extends Controller
      */
     public function index()
     {
-        //
+        $articleimages = ArticleImage::all();
+        return view('articleimages.index', ['articleimages' => $articleimages]);
     }
 
     /**
@@ -25,7 +27,7 @@ class ArticleImageController extends Controller
      */
     public function create()
     {
-        //
+        return view('articleimages.create');
     }
 
     /**
@@ -34,9 +36,18 @@ class ArticleImageController extends Controller
      * @param  \App\Http\Requests\StoreArticleImageRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreArticleImageRequest $request)
+    public function store(Request $request)
     {
-        //
+        $articleimage = new ArticleImage;
+
+        $articleimage->alt = $request->alt;
+        $articleimage->src = $request->src;
+        $articleimage->width = $request->width;
+        $articleimage->height = $request->height;
+        $articleimage->class = $request->class;
+
+        $articleimage->save();
+        return redirect()->route('articleimage.index');
     }
 
     /**
@@ -47,7 +58,7 @@ class ArticleImageController extends Controller
      */
     public function show(ArticleImage $articleImage)
     {
-        //
+        return view('articleimages.show', ['articleimage' => $articleImage]);
     }
 
     /**
@@ -58,7 +69,7 @@ class ArticleImageController extends Controller
      */
     public function edit(ArticleImage $articleImage)
     {
-        //
+        return view('articleimages.edit', ['articleimage' => $articleImage]);
     }
 
     /**
@@ -68,9 +79,16 @@ class ArticleImageController extends Controller
      * @param  \App\Models\ArticleImage  $articleImage
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateArticleImageRequest $request, ArticleImage $articleImage)
+    public function update(Request $request, ArticleImage $articleImage)
     {
-        //
+        $articleImage->alt = $request->alt;
+        $articleImage->src = $request->src;
+        $articleImage->width = $request->width;
+        $articleImage->height = $request->height;
+        $articleImage->class = $request->class;
+
+        $articleImage->save();
+        return redirect()->route('articleimage.index');
     }
 
     /**
@@ -81,6 +99,7 @@ class ArticleImageController extends Controller
      */
     public function destroy(ArticleImage $articleImage)
     {
-        //
+        $articleImage->delete();
+        return redirect()->route('articleimage.index');
     }
 }

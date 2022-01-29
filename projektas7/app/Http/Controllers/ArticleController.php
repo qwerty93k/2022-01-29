@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
+use illuminate\http\Request;
 
 class ArticleController extends Controller
 {
@@ -15,7 +16,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+        $articles = Article::all();
+        return view('articles.index', ['atricles' => $articles]);
     }
 
     /**
@@ -25,7 +27,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        view('articles.create');
     }
 
     /**
@@ -34,9 +36,17 @@ class ArticleController extends Controller
      * @param  \App\Http\Requests\StoreArticleRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreArticleRequest $request)
+    public function store(Request $request)
     {
-        //
+        $article = new Article;
+
+        $article->title = $request->title;
+        $article->excerpt = $request->excerpt;
+        $article->description = $request->description;
+        $article->author = $request->author;
+
+        $article->save();
+        return redirect()->route('article.index');
     }
 
     /**
@@ -47,7 +57,7 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        //
+        return view('article.show', ['article' => $article]);
     }
 
     /**
@@ -58,7 +68,7 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        //
+        return view('article.edit', ['article' => $article]);
     }
 
     /**
@@ -68,9 +78,15 @@ class ArticleController extends Controller
      * @param  \App\Models\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateArticleRequest $request, Article $article)
+    public function update(Request $request, Article $article)
     {
-        //
+        $article->title = $request->title;
+        $article->excerpt = $request->excerpt;
+        $article->description = $request->description;
+        $article->author = $request->author;
+
+        $article->save();
+        return redirect()->route('article.index');
     }
 
     /**
@@ -81,6 +97,7 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
-        //
+        $article->delete();
+        return redirect()->route('article.index');
     }
 }

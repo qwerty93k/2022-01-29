@@ -15,6 +15,11 @@ class CreateAuthorImagesTable extends Migration
     {
         Schema::create('author_images', function (Blueprint $table) {
             $table->id();
+            $table->string('alt');
+            $table->string('src');
+            $table->string('width');
+            $table->string('height');
+            $table->string('class');
             $table->timestamps();
         });
     }

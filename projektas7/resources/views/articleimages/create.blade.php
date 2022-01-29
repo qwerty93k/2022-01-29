@@ -5,57 +5,56 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Profile Image</div>
+                    <div class="card-header">Article Image</div>
     
                     <div class="card-body">
-                        <form method="POST" action="{{route('profileimage.store')}}" enctype="multipart/form-data"> {{-- bet koki faila uzkoduoja kaip teksta--}}
+                        <form method="POST" action="{{route('articleimage.store')}}" enctype="multipart/form-data">
                             @csrf
     
                             <div class="row mb-3">
-                                <label for="image_alt" class="col-md-4 col-form-label text-md-end">Image Alt</label>
+                                <label for="alt" class="col-md-4 col-form-label text-md-end">Alt</label>
     
                                 <div class="col-md-6">
-                                    <input id="image_alt" type="text" class="form-control" name="image_alt" required autofocus>
+                                    <input id="alt" type="text" class="form-control" name="alt" required autofocus>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="src" class="col-md-4 col-form-label text-md-end">File</label>
+    
+                                <div class="col-md-6">
+                                    <input id="src" type="file" class="form-control" name="src" required autofocus>
     
                                 </div>
                             </div>
 
                             <div class="row mb-3">
-                                <label for="image_src" class="col-md-4 col-form-label text-md-end">Image</label>
+                                <label for="width" class="col-md-4 col-form-label text-md-end">Width</label>
     
                                 <div class="col-md-6">
-                                    <input id="image_src" type="file" class="form-control" name="image_src" required autofocus>
+                                    <input id="width" type="number" min="0" max="200" step="10" class="form-control" name="width" required autofocus>
     
                                 </div>
                             </div>
 
                             <div class="row mb-3">
-                                <label for="image_width" class="col-md-4 col-form-label text-md-end">Image Width</label>
+                                <label for="height" class="col-md-4 col-form-label text-md-end">Height</label>
     
                                 <div class="col-md-6">
-                                    <input id="image_width" type="number" min="0" max="200" step="10" class="form-control" name="image_width" required autofocus>
+                                    <input id="height" type="number" min="0" max="200" step="10" class="form-control" name="height" required autofocus>
     
                                 </div>
                             </div>
 
                             <div class="row mb-3">
-                                <label for="image_height" class="col-md-4 col-form-label text-md-end">Image Height</label>
+                                <label for="class" class="col-md-4 col-form-label text-md-end">Class</label>
     
                                 <div class="col-md-6">
-                                    <input id="image_height" type="number" min="0" max="200" step="10" class="form-control" name="image_height" required autofocus>
+                                    <input id="class" type="class" class="form-control" name="class" required autofocus>
     
                                 </div>
                             </div>
 
-                            <div class="row mb-3">
-                                <label for="image_class" class="col-md-4 col-form-label text-md-end">Image Class</label>
-    
-                                <div class="col-md-6">
-                                    <input id="image_class" type="text" class="form-control" name="image_class" required autofocus>
-    
-                                </div>
-                            </div>
-    
                             <div class="row mb-0">
                                 <div class="col-md-8 offset-md-4">
                                     <button type="submit" class="btn btn-primary">

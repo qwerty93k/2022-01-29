@@ -1,4 +1,3 @@
-<h1>aaaaaaaaa</h1>
 @extends('layouts.app')
 
 @section('content')

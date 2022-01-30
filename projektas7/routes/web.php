@@ -22,7 +22,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::prefix('article_images')->group(function () {
+Route::prefix('articleimages')->group(function () {
     Route::get('', 'App\Http\Controllers\ArticleImageController@index')->name('articleimage.index');
     Route::get('create', 'App\Http\Controllers\ArticleImageController@create')->name('articleimage.create');
     Route::post('store', 'App\Http\Controllers\ArticleImageController@store')->name('articleimage.store');
@@ -42,7 +42,7 @@ Route::prefix('articles')->group(function () {
     Route::get('show/{article}', 'App\Http\Controllers\ArticleController@show')->name('article.show');
 });
 
-Route::prefix('article_categories')->group(function () {
+Route::prefix('articlecategories')->group(function () {
     Route::get('', 'App\Http\Controllers\ArticleCategoryController@index')->name('articlecategory.index');
     Route::get('create', 'App\Http\Controllers\ArticleCategoryController@create')->name('articlecategory.create');
     Route::post('store', 'App\Http\Controllers\ArticleCategoryController@store')->name('articlecategory.store');

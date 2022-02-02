@@ -48,7 +48,7 @@ class ArticleController extends Controller
         $article->author = $request->author;
 
         $article->save();
-        return redirect()->route('article.index');
+        return redirect()->route('articles.index');
     }
 
     /**
@@ -59,7 +59,7 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        return view('article.show', ['article' => $article]);
+        return view('articles.show', ['article' => $article]);
     }
 
     /**
@@ -70,7 +70,7 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        return view('article.edit', ['article' => $article]);
+        return view('articles.edit', ['article' => $article]);
     }
 
     /**
@@ -90,7 +90,7 @@ class ArticleController extends Controller
         $article->author = $request->author;
 
         $article->save();
-        return redirect()->route('article.index');
+        return redirect()->route('articles.index');
     }
 
     /**
@@ -102,6 +102,6 @@ class ArticleController extends Controller
     public function destroy(Article $article)
     {
         $article->delete();
-        return redirect()->route('article.index');
+        return redirect()->route('articles.index');
     }
 }

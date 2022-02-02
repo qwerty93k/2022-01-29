@@ -17,7 +17,7 @@ class ArticleCategoryController extends Controller
     public function index()
     {
         $articlecategories = ArticleCategory::all();
-        return view('articlecategory.index', ['articlecategories' => $articlecategories]);
+        return view('articlecategories.index', ['articlecategories' => $articlecategories]);
     }
 
     /**
@@ -44,7 +44,7 @@ class ArticleCategoryController extends Controller
         $articlecategory->description = $request->description;
 
         $articlecategory->save();
-        return redirect()->route('articlecategory.index');
+        return redirect()->route('articlecategories.index');
     }
 
     /**
@@ -53,9 +53,9 @@ class ArticleCategoryController extends Controller
      * @param  \App\Models\ArticleCategory  $articleCategory
      * @return \Illuminate\Http\Response
      */
-    public function show(ArticleCategory $articleCategory)
+    public function show(ArticleCategory $articlecategory)
     {
-        return view('articlecategory.show', ['articlecategory' => $articleCategory]);
+        return view('articlecategories.show', ['articlecategory' => $articlecategory]);
     }
 
     /**
@@ -64,9 +64,9 @@ class ArticleCategoryController extends Controller
      * @param  \App\Models\ArticleCategory  $articleCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(ArticleCategory $articleCategory)
+    public function edit(ArticleCategory $articlecategory)
     {
-        return view('articlecategory.edit', ['articlecategory' => $articleCategory]);
+        return view('articlecategories.edit', ['articlecategory' => $articlecategory]);
     }
 
     /**
@@ -76,13 +76,13 @@ class ArticleCategoryController extends Controller
      * @param  \App\Models\ArticleCategory  $articleCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ArticleCategory $articleCategory)
+    public function update(Request $request, ArticleCategory $articlecategory)
     {
-        $articleCategory->title = $request->title;
-        $articleCategory->description = $request->description;
+        $articlecategory->title = $request->title;
+        $articlecategory->description = $request->description;
 
-        $articleCategory->save();
-        return redirect()->route('articlecategory.index');
+        $articlecategory->save();
+        return redirect()->route('articlecategories.index');
     }
 
     /**
@@ -91,9 +91,9 @@ class ArticleCategoryController extends Controller
      * @param  \App\Models\ArticleCategory  $articleCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ArticleCategory $articleCategory)
+    public function destroy(ArticleCategory $articlecategory)
     {
-        $articleCategory->delete();
-        return redirect()->route('articlecategory.index');
+        $articlecategory->delete();
+        return redirect()->route('articlecategories.index');
     }
 }

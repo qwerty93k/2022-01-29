@@ -51,18 +51,18 @@ class ArticleImageController extends Controller
         $articleimage->class = $request->class;
 
         $articleimage->save();
-        return redirect()->route('articleimage.index');
+        return redirect()->route('articleimages.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ArticleImage  $articleImage
+     * @param  \App\Models\ArticleImage  $articleimage
      * @return \Illuminate\Http\Response
      */
-    public function show(ArticleImage $articleImage)
+    public function show(ArticleImage $articleimage)
     {
-        return view('articleimages.show', ['articleimage' => $articleImage]);
+        return view('articleimages.show', ['articleimage' => $articleimage]);
     }
 
     /**
@@ -71,43 +71,43 @@ class ArticleImageController extends Controller
      * @param  \App\Models\ArticleImage  $articleImage
      * @return \Illuminate\Http\Response
      */
-    public function edit(ArticleImage $articleImage)
+    public function edit(ArticleImage $articleimage)
     {
-        return view('articleimages.edit', ['articleimage' => $articleImage]);
+        return view('articleimages.edit', ['articleimage' => $articleimage]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdateArticleImageRequest  $request
-     * @param  \App\Models\ArticleImage  $articleImage
+     * @param  \App\Models\ArticleImage  $articleimage
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ArticleImage $articleImage)
+    public function update(Request $request, ArticleImage $articleimage)
     {
-        $articleImage->alt = $request->alt;
+        $articleimage->alt = $request->alt;
 
         $imagename = 'src' . time() . '.' . $request->src->extension();
         $request->src->move(public_path('images'), $imagename);
-        $articleImage->src = $imagename;
+        $articleimage->src = $imagename;
 
-        $articleImage->width = $request->width;
-        $articleImage->height = $request->height;
-        $articleImage->class = $request->class;
+        $articleimage->width = $request->width;
+        $articleimage->height = $request->height;
+        $articleimage->class = $request->class;
 
-        $articleImage->save();
-        return redirect()->route('articleimage.index');
+        $articleimage->save();
+        return redirect()->route('articleimages.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ArticleImage  $articleImage
+     * @param  \App\Models\ArticleImage  $articleimage
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ArticleImage $articleImage)
+    public function destroy(ArticleImage $articleimage)
     {
-        $articleImage->delete();
-        return redirect()->route('articleimage.index');
+        $articleimage->delete();
+        return redirect()->route('articleimages.index');
     }
 }

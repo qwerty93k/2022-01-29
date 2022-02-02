@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ArticleImage;
 use App\Http\Requests\StoreArticleImageRequest;
 use App\Http\Requests\UpdateArticleImageRequest;
-use Illuminate\http\Request;
+use Illuminate\Http\Request;
 
 class ArticleImageController extends Controller
 {

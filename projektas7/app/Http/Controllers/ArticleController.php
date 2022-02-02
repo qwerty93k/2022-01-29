@@ -43,6 +43,8 @@ class ArticleController extends Controller
         $article->title = $request->title;
         $article->excerpt = $request->excerpt;
         $article->description = $request->description;
+        $article->category_id = $request->category_id;
+        $article->image_id = $request->image_id;
         $article->author = $request->author;
 
         $article->save();
@@ -83,6 +85,8 @@ class ArticleController extends Controller
         $article->title = $request->title;
         $article->excerpt = $request->excerpt;
         $article->description = $request->description;
+        $article->category_id = $request->category_id;
+        $article->image_id = $request->image_id;
         $article->author = $request->author;
 
         $article->save();

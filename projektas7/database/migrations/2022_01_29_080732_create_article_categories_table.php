@@ -15,7 +15,6 @@ class CreateArticleCategoriesTable extends Migration
     {
         Schema::create('article_categories', function (Blueprint $table) {
             $table->id();
-            $table->foreign('id')->references('id')->on('articles');
             $table->string('title');
             $table->longtext('description');
             $table->timestamps();

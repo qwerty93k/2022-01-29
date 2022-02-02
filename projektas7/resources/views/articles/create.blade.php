@@ -38,6 +38,24 @@
                             </div>
 
                             <div class="row mb-3">
+                                <label for="description" class="col-md-4 col-form-label text-md-end">Category</label>
+    
+                                <div class="col-md-6">
+                                    <input id="category_id" type="number" class="form-control" name="category_id" required autofocus>
+    
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="description" class="col-md-4 col-form-label text-md-end">Image</label>
+    
+                                <div class="col-md-6">
+                                    <input id="image_id" type="number" class="form-control" name="image_id" required autofocus>
+    
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
                                 <label for="author" class="col-md-4 col-form-label text-md-end">Author</label>
     
                                 <div class="col-md-6">

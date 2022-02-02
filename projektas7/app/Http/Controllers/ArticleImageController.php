@@ -41,7 +41,11 @@ class ArticleImageController extends Controller
         $articleimage = new ArticleImage;
 
         $articleimage->alt = $request->alt;
-        $articleimage->src = $request->src;
+
+        $imagename = 'src' . time() . '.' . $request->src->extension();
+        $request->src->move(public_path('images'), $imagename);
+        $articleimage->src = $imagename;
+
         $articleimage->width = $request->width;
         $articleimage->height = $request->height;
         $articleimage->class = $request->class;
@@ -82,7 +86,11 @@ class ArticleImageController extends Controller
     public function update(Request $request, ArticleImage $articleImage)
     {
         $articleImage->alt = $request->alt;
-        $articleImage->src = $request->src;
+
+        $imagename = 'src' . time() . '.' . $request->src->extension();
+        $request->src->move(public_path('images'), $imagename);
+        $articleImage->src = $imagename;
+
         $articleImage->width = $request->width;
         $articleImage->height = $request->height;
         $articleImage->class = $request->class;

@@ -41,7 +41,12 @@
                                 <label for="description" class="col-md-4 col-form-label text-md-end">Category</label>
     
                                 <div class="col-md-6">
-                                    <input id="category_id" type="number" class="form-control" name="category_id" value={{$article->category_id}} required autofocus>
+                                    {{-- <input id="category_id" type="number" class="form-control" name="category_id" value={{$article->category_id}} required autofocus> --}}
+                                    <select name="category_id" class="form-control">
+                                        @foreach ($select_values as $articlecategory)
+                                            <option value="{{$articlecategory->id}}">{{$articlecategory->title}}</option>                    
+                                        @endforeach
+                                    </select>
     
                                 </div>
                             </div>

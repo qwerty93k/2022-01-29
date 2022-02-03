@@ -23,7 +23,7 @@
                                 <td>{{$article->title}}</td>
                                 <td>{{$article->excerpt}}</td>
                                 <td>{{$article->description}}</td>
-                                <td>{{$article->category_id}}</td>
+                                <td>{{$article->article_category->title}}</td>
                                 <td>{{$article->image_id}}</td>
                                 <td>{{$article->author}}</td>
                                 <td>

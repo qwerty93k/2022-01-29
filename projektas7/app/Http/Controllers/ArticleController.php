@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
+use App\Models\ArticleCategory;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -27,7 +28,8 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('articles.create');
+        $select_values = ArticleCategory::all();
+        return view('articles.create', ['select_values' => $select_values]);
     }
 
     /**
@@ -70,7 +72,8 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        return view('articles.edit', ['article' => $article]);
+        $select_values = ArticleCategory::all();
+        return view('articles.edit', ['article' => $article, 'select_values' => $select_values]);
     }
 
     /**
